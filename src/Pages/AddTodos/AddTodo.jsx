@@ -46,7 +46,7 @@ const AddTodo = ({ getTodos, onAddTodo }) => {
     <main className="addTodo__main">
       <div className="container addtodo__container">
         <div>
-          <h1>Hi {auth?.currentUser?.displayName}</h1>
+          <h1>Hi, {auth?.currentUser?.displayName}</h1>
           <p>Create a todo</p>
         </div>
         <input
