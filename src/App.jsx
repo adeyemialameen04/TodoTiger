@@ -16,6 +16,14 @@ function App() {
   const ref = collection(db, todosRfef);
   const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   const getTodos = async () => {
     try {
       const data = await getDocs(ref);
@@ -36,12 +44,11 @@ function App() {
 
   return (
     <Router>
-      <Navbar />
-      {/* <Routes>
-        <Route path="/" element={<Auth />} />
-        <Route path="/newTodo" element={<AddTodo getTodos={getTodos} onAddTodo={handleAddToTodo} />} />
-        <Route path="/todos" element={<Todos />} />
-      </Routes> */}
+      <>
+        {
+          user ? <Navbar /> : ""
+        }
+      </>
       <AnimatedRoutes getTodos={getTodos} onAddTodo={handleAddToTodo} />
     </Router>
   );
