@@ -12,6 +12,7 @@ const AddTodo = ({ getTodos, onAddTodo }) => {
   const addTodo = async () => {
     try {
       if (todo.trim() === "" || content.trim() === "") {
+        alert("You cant submit an empty todo");
         return;
       }
 

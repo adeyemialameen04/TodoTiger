@@ -1,25 +1,10 @@
-import { collection, deleteDoc, getDocs, doc } from "firebase/firestore";
+import { deleteDoc, doc } from "firebase/firestore";
 import { useEffect, useState } from 'react';
 import { auth, db } from "../../config/firebase";
+import { Link } from "react-router-dom";
+import TodoItem from "./TodoItem";
 
 const DisplayTodo = ({ getTodos, todos, reference }) => {
-  // const [todos, setTodos] = useState([]);
-  // const todosRfef = "todos";
-  // const ref = collection(db, todosRfef);
-
-  // const getTodos = async () => {
-  //   try {
-  //     const data = await getDocs(ref);
-  //     const filteredData = data.docs.map(doc => ({
-  //       ...doc.data(),
-  //       id: doc.id
-  //     }));
-  //     setTodos(filteredData);
-  //     console.log(todos);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
 
   useEffect(() => {
     getTodos();
@@ -29,6 +14,7 @@ const DisplayTodo = ({ getTodos, todos, reference }) => {
     try {
       const todoDocRef = doc(reference, id);
       await deleteDoc(todoDocRef);
+      alert("Todo deleted successfully")
       getTodos();
     } catch (error) {
       console.error(error);
@@ -41,23 +27,21 @@ const DisplayTodo = ({ getTodos, todos, reference }) => {
   }, []);
 
   return (
-    <div>
-      {
-        todos.map((todo, index) => (
-          <article key={todo.id}>
-            {
-              todo.userId === auth?.currentUser?.uid && (
-                <div key={index}>
-                  <h1>{todo.title}</h1>
-                  <p>{todo.content}</p>
-                  <button onClick={() => deleteTodo(todo.id)}>Delete Todo</button>
-                </div>
-              )
-            }
-          </article>
-        ))
-      }
-    </div>
+    <section className="todos__section">
+      <aside className="container">
+        <h1>Hi, {auth?.currentUser?.displayName}</h1>
+        <Link to="/newTodo">Create a todo</Link>
+      </aside>
+      <div className="container todos__container">
+        {
+          todos.map((todo) => (
+            <div key={todo.id} >
+              <TodoItem todo={todo} onDeleteTodo={deleteTodo} />
+            </div>
+          ))
+        }
+      </div>
+    </section>
   );
 };
 

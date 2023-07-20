@@ -1,7 +1,7 @@
+import "./todo.css";
 import { useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import AddTodo from "../AddTodos/AddTodo";
 import DisplayTodo from "./DisplayTodo";
 
 const Todos = () => {
@@ -29,7 +29,6 @@ const Todos = () => {
 
   return (
     <div>
-      {/* <AddTodo getTodos={getTodos} onAddTodo={handleAddToTodo} /> */}
       <DisplayTodo getTodos={getTodos} todos={todos} reference={ref} />
     </div>
   );
