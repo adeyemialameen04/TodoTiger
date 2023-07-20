@@ -1,13 +1,13 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Auth from "./components/Authentication/Auth";
-import Todos from "./Todos/Todos";
+import Todos from "./Pages/Todos/Todos";
 // import AddTodo from "./Todos/AddTodo";
 
 
 import { useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./config/firebase";
-import AddTodo from "./Todos/AddTodo";
+import AddTodo from "./Pages/AddTodos/AddTodo";
 import Navbar from "./components/Navbar/Navbar";
 
 

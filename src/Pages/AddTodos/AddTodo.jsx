@@ -1,8 +1,8 @@
 import { addDoc, collection } from "firebase/firestore";
 import React, { useEffect, useState } from 'react';
-import { auth, db } from "../config/firebase";
+import { auth, db } from "../../config/firebase";
 import { Link } from "react-router-dom";
-import "./todo.css";
+import "./addtodo.css";
 
 const AddTodo = ({ getTodos, onAddTodo }) => {
   const [todo, setTodo] = useState("");
@@ -42,19 +42,28 @@ const AddTodo = ({ getTodos, onAddTodo }) => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        value={todo}
-        onChange={(e) => setTodo(e.target.value)}
-      />
-      <input
-        type="text"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-      />
-      <button onClick={addTodo}>Add</button>
-    </div>
+    <main className="addTodo__main">
+      <div className="container addtodo__container">
+        <div>
+          <h1>Hi {auth?.currentUser?.displayName}</h1>
+          <p>Create a todo</p>
+        </div>
+        <input
+          type="text"
+          value={todo}
+          placeholder="Title"
+          onChange={(e) => setTodo(e.target.value)}
+        />
+        <textarea
+          type="text"
+          value={content}
+          placeholder="Content of todo"
+          onChange={(e) => setContent(e.target.value)}
+        />
+        <button onClick={addTodo}>Submit</button>
+        <Link to="/todos">Todos</Link>
+      </div>
+    </main>
   );
 };
 
