@@ -1,5 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Auth from "./Authentication/Auth";
+import Auth from "./components/Authentication/Auth";
 import Todos from "./Todos/Todos";
 // import AddTodo from "./Todos/AddTodo";
 
@@ -8,6 +8,7 @@ import { useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./config/firebase";
 import AddTodo from "./Todos/AddTodo";
+import Navbar from "./components/Navbar/Navbar";
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <Router>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Auth />} />
         <Route path="/newTodo" element={<AddTodo getTodos={getTodos} onAddTodo={handleAddToTodo} />} />

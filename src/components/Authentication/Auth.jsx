@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./auth.css";
 import { onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
-import { auth, googleProvider } from "../config/firebase";
-import { useNavigate } from "react-router-dom";
+import { auth, googleProvider } from "../../config/firebase";
+import { Link, useNavigate } from "react-router-dom";
 
 const Auth = () => {
   const [user, setUser] = useState(null);
@@ -44,7 +44,7 @@ const Auth = () => {
 
   return (
     <div>
-      <h1>Auth</h1>
+      <Link to="/newTodo">Proceed to App</Link>
       <button onClick={logout}>Logout</button>
     </div>
   );
