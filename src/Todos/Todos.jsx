@@ -29,7 +29,7 @@ const Todos = () => {
 
   return (
     <div>
-      <AddTodo getTodos={getTodos} onAddTodo={handleAddToTodo} />
+      {/* <AddTodo getTodos={getTodos} onAddTodo={handleAddToTodo} /> */}
       <DisplayTodo getTodos={getTodos} todos={todos} reference={ref} />
     </div>
   );

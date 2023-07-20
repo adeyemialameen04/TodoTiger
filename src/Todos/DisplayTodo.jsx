@@ -50,7 +50,6 @@ const DisplayTodo = ({ getTodos, todos, reference }) => {
                 <div key={index}>
                   <h1>{todo.title}</h1>
                   <p>{todo.content}</p>
-                  <p>{todo.userId}</p>
                   <button onClick={() => deleteTodo(todo.id)}>Delete Todo</button>
                 </div>
               )
