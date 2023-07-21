@@ -21,11 +21,6 @@ const DisplayTodo = ({ getTodos, todos, reference }) => {
     }
   };
 
-  useEffect(() => {
-    console.log(auth?.currentUser?.uid);
-    console.log(todos);
-  }, []);
-
   return (
     <section className="todos__section">
       <aside className="container">

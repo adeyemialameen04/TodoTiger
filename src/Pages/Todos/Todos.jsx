@@ -17,9 +17,10 @@ const Todos = () => {
         id: doc.id
       }));
       setTodos(filteredData);
-      console.log(todos);
     } catch (error) {
-      console.error(error);
+      return (
+        <h1>Error: {error}</h1>
+      );
     }
   };
 

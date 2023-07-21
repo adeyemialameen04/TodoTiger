@@ -32,7 +32,6 @@ function App() {
         id: doc.id
       }));
       setTodos(filteredData);
-      console.log(todos);
     } catch (error) {
       console.error(error);
     }
