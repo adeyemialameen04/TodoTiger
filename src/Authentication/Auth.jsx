@@ -19,7 +19,7 @@ const Auth = () => {
   const signin = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-      navigate("/todos");
+      navigate("/newTodo");
     } catch (error) {
       console.error(error);
     }
