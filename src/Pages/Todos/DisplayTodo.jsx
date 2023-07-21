@@ -1,6 +1,6 @@
 import { collection, deleteDoc, getDocs, doc } from "firebase/firestore";
 import { useEffect, useState } from 'react';
-import { auth, db } from "../config/firebase";
+import { auth, db } from "../../config/firebase";
 
 const DisplayTodo = ({ getTodos, todos, reference }) => {
   // const [todos, setTodos] = useState([]);

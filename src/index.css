@@ -17,6 +17,9 @@
 
   --clr-black: hsl(0, 0%, 0%);
   --clr-white: hsl(0, 0%, 100%);
+  --clr-purple: hsl(271, 95%, 78%);
+  --clr-gray: #f9f7f7;
+  --clr-blue: #99d4fe;
 
   --transition: all 350ms ease-in-out;
   --container-md: 94%;

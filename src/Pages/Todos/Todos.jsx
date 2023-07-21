@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../config/firebase";
-import AddTodo from "./AddTodo";
+import { db } from "../../config/firebase";
+import AddTodo from "../AddTodos/AddTodo";
 import DisplayTodo from "./DisplayTodo";
 
 const Todos = () => {
