@@ -36,17 +36,23 @@ const Auth = () => {
 
   if (!user) {
     return (
-      <div>
-        <button onClick={signin}>Sign in with google</button>
-      </div>
+      <main className="auth__main">
+        <div className="container auth__container">
+          <h1>Welcome to TodoTiger🐯</h1>
+          <p>Login to save your todos online</p>
+          <button onClick={signin}>Sign in with google</button>
+        </div>
+      </main>
     );
   }
 
   return (
-    <div>
-      <Link to="/newTodo">Proceed to App</Link>
-      <button onClick={logout}>Logout</button>
-    </div>
+    <main className="auth__main">
+      <div className="container auth__container">
+        <Link to="/newTodo">Proceed to App</Link>
+        <button onClick={logout}>Logout</button>
+      </div>
+    </main>
   );
 };
 

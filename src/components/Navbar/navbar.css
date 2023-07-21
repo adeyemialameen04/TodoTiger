@@ -40,14 +40,18 @@
   font-weight: 700;
 }
 
-@media(min-width:330px) {
+@media(max-width:330px) {
   .logo {
     font-size: 1.6rem;
   }
 
-  .header__container nav button> {
-    font-size: 1.2em;
-    height: 30px;
-    width: 30px;
+  .header__container nav {
+    gap: .6rem;
+  }
+
+  .header__container nav button {
+    font-size: .9rem;
+    height: 20px;
+    width: 20px;
   }
 }
