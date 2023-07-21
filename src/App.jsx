@@ -7,6 +7,7 @@ import { auth, db } from "./config/firebase";
 import AddTodo from "./Pages/AddTodos/AddTodo";
 import Navbar from "./components/Navbar/Navbar";
 import { onAuthStateChanged } from "@firebase/auth";
+import AnimatedRoutes from "./components/AnimatedRoutes";
 
 
 function App() {
@@ -14,18 +15,6 @@ function App() {
   const todosRfef = "todos";
   const ref = collection(db, todosRfef);
   const [user, setUser] = useState(null);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (!user) {
-        navigate("/");
-      }
-      setUser(user);
-    });
-
-    return () => unsubscribe();
-  }, []);
 
   const getTodos = async () => {
     try {
@@ -48,11 +37,12 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<Auth />} />
         <Route path="/newTodo" element={<AddTodo getTodos={getTodos} onAddTodo={handleAddToTodo} />} />
         <Route path="/todos" element={<Todos />} />
-      </Routes>
+      </Routes> */}
+      <AnimatedRoutes getTodos={getTodos} onAddTodo={handleAddToTodo} />
     </Router>
   );
 }
