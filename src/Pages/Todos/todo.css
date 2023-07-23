@@ -22,8 +22,11 @@
 }
 
 .todos__container {
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  /* background-color: red; */
   gap: 1rem;
 }
 
@@ -34,7 +37,8 @@
   background-color: var(--clr-green);
   padding-bottom: 2rem;
   padding-inline: .5rem;
-  max-width: 60%;
+  word-wrap: break-word;
+  /* width: max-content; */
 }
 
 .top {
@@ -44,6 +48,8 @@
   border-bottom: 1px solid var(--clr-gray);
   padding-block: .4rem;
   margin-bottom: 1rem;
+  word-wrap: break-word;
+
 }
 
 .top h1 {
