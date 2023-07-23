@@ -1,10 +1,11 @@
 import { deleteDoc, doc } from "firebase/firestore";
-import { useEffect, useState } from 'react';
-import { auth, db } from "../../config/firebase";
+import { useEffect } from 'react';
+import { auth } from "../../config/firebase";
 import { Link } from "react-router-dom";
 import TodoItem from "./TodoItem";
 
 const DisplayTodo = ({ getTodos, todos, reference }) => {
+  const currentUser = auth?.currentUser?.uid;
 
   useEffect(() => {
     getTodos();
@@ -14,7 +15,7 @@ const DisplayTodo = ({ getTodos, todos, reference }) => {
     try {
       const todoDocRef = doc(reference, id);
       await deleteDoc(todoDocRef);
-      alert("Todo deleted successfully")
+      alert("Todo deleted successfully");
       getTodos();
     } catch (error) {
       console.error(error);
@@ -30,9 +31,7 @@ const DisplayTodo = ({ getTodos, todos, reference }) => {
       <div className="container todos__container">
         {
           todos.map((todo) => (
-            <div key={todo.id} >
-              <TodoItem todo={todo} onDeleteTodo={deleteTodo} />
-            </div>
+            <TodoItem key={todo.id} todo={todo} onDeleteTodo={deleteTodo} />
           ))
         }
       </div>
