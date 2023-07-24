@@ -36,10 +36,6 @@ const TodoItem = ({ todo, onDeleteTodo }) => {
   const day = days[newDate.getDay()];
   const month = months[newDate.getMonth()];
 
-  useEffect(() => {
-    console.log("Sup", year);
-  }, []);
-
   return (
     <article
       key={todo.id}
