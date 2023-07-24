@@ -45,22 +45,6 @@ const DisplayTodo = ({ getTodos, todos, reference }) => {
     }
   };
 
-  const renderAllTodos = () => {
-    return todos.map((todo) => (
-      <TodoItem key={todo.id} todo={todo} onDeleteTodo={deleteTodo} />
-    ));
-  };
-
-  const renderFilteredTodos = () => {
-    return filteredTodos.map((todo) => (
-      <TodoItem key={todo.id} todo={todo} onDeleteTodo={deleteTodo} />
-    ));
-  };
-
-  const renderNoMatchingTodos = () => {
-    return <p>No matching todos found.</p>;
-  };
-
   return (
     <section className="todos__section">
       <aside className="container">
