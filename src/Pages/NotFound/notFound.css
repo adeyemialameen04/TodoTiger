@@ -18,7 +18,8 @@
   font-weight: 500;
 }
 
-.notFound__container>a {
+.notFound__container>a,
+.back-btn {
   margin-top: 1rem;
   box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
   background-color: var(--clr-purple);
@@ -32,4 +33,13 @@
   max-width: 12.5rem;
   align-self: center;
   padding-inline: 1rem;
+}
+
+.back-btn {
+  position: absolute;
+  top: 6rem;
+  left: 6%;
+  width: 150px;
+  height: 40px;
+  background-color: var(--clr-blue);
 }
