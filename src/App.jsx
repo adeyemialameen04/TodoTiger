@@ -8,6 +8,7 @@ import AddTodo from "./Pages/AddTodos/AddTodo";
 import Navbar from "./components/Navbar/Navbar";
 import { onAuthStateChanged } from "@firebase/auth";
 import AnimatedRoutes from "./components/AnimatedRoutes";
+import Footer from "./components/Footer/Footer";
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
         }
       </>
       <AnimatedRoutes getTodos={getTodos} onAddTodo={handleAddToTodo} />
+      <Footer />
     </Router>
   );
 }

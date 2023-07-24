@@ -17,6 +17,12 @@ const AddTodo = ({ onAddTodo }) => {
       } else if (date.trim() === "") {
         alert("Pls add a deadline 😉🥹");
       }
+      const currentDate = new Date().toISOString().split('T')[0];
+      if (date < currentDate) {
+        alert("You can't select a date from the past 😒😒");
+        setDate("");
+        return;
+      }
 
       const todoRef = collection(db, "todos");
       await addDoc(todoRef, {
