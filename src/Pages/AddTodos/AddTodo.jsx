@@ -7,26 +7,30 @@ import "./addtodo.css";
 const AddTodo = ({ getTodos, onAddTodo }) => {
   const [todo, setTodo] = useState("");
   const [content, setContent] = useState("");
-  const [isModalShowing, setIsModalShowing] = useState(false);
+  const [date, setDate] = useState("");
 
   const addTodo = async () => {
     try {
       if (todo.trim() === "" || content.trim() === "") {
         alert("You cant submit an empty todo");
         return;
+      } else if (date.trim() === "") {
+        alert("Pls add a deadline 😉🥹");
       }
 
       const todoRef = collection(db, "todos");
       await addDoc(todoRef, {
         title: todo,
         content: content,
-        userId: auth?.currentUser?.uid
+        userId: auth?.currentUser?.uid,
+        date: date
       });
 
       const newTodo = {
         userId: auth?.currentUser?.uid,
         title: todo,
-        content: content
+        content: content,
+        date: date
       };
 
 
@@ -55,6 +59,8 @@ const AddTodo = ({ getTodos, onAddTodo }) => {
           placeholder="Title"
           onChange={(e) => setTodo(e.target.value)}
         />
+        <label htmlFor="date">Deadline</label>
+        <input type="date" id="date" value={date} onChange={(e) => setDate(e.target.value)} />
         <textarea
           type="text"
           value={content}
