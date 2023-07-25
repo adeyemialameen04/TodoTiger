@@ -1,9 +1,8 @@
 import { AiFillDelete } from "react-icons/ai";
 import { auth } from "../../config/firebase";
-import { useEffect } from "react";
 
 const TodoItem = ({ todo, onDeleteTodo }) => {
-  const isCurrentUserTodo = todo.userId === auth?.currentUser?.uid;
+  const currentUserId = auth?.currentUser?.uid;
 
   const newDate = new Date(todo.date);
   const year = newDate.getFullYear();
@@ -37,27 +36,22 @@ const TodoItem = ({ todo, onDeleteTodo }) => {
   const month = months[newDate.getMonth()];
 
   return (
-    <article
-      key={todo.id}
-      style={{
-        display: isCurrentUserTodo ? "flex" : "none"
-      }}
-      className="todo">
+    <>
       {
-        auth.currentUser.uid === todo.userId && (
-          <>
+        currentUserId === todo.userId && (
+          <article className="todo">
             <h1 className="title">{todo.title}</h1>
-            <div>{todo.content}</div>
+            <p>{todo.content}</p>
             <div className="bottom">
               <small>Deadline: {day}, {month}, {year}</small>
               <button className="deleteBtn" onClick={() => onDeleteTodo(todo.id)}>
                 <AiFillDelete />
               </button>
             </div>
-          </>
+          </article>
         )
       }
-    </article>
+    </>
   );
 };
 

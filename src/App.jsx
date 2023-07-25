@@ -1,14 +1,10 @@
-import { Route, BrowserRouter as Router, Routes, useNavigate } from "react-router-dom";
-import Auth from "./components/Authentication/Auth";
-import Todos from "./Pages/Todos/Todos";
+import { BrowserRouter as Router } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { auth, db } from "./config/firebase";
-import AddTodo from "./Pages/AddTodos/AddTodo";
 import Navbar from "./components/Navbar/Navbar";
 import { onAuthStateChanged } from "@firebase/auth";
 import AnimatedRoutes from "./components/AnimatedRoutes";
-import Footer from "./components/Footer/Footer";
 
 
 function App() {
@@ -50,7 +46,6 @@ function App() {
         }
       </>
       <AnimatedRoutes getTodos={getTodos} onAddTodo={handleAddToTodo} />
-      <Footer />
     </Router>
   );
 }

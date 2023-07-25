@@ -1,5 +1,18 @@
 .todos__section aside {
-  margin-bottom: 2rem;
+  margin-block: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 2rem;
+}
+
+.todos__section aside input {
+  align-self: center;
+  height: 40px;
+  outline: none;
+  width: 70%;
+  max-width: 39.375rem;
+  padding-left: 10px;
 }
 
 .todos__section aside h1 {
@@ -18,7 +31,6 @@
   color: var(--clr-white);
   text-decoration: none;
   max-width: 12.5rem;
-  margin-top: 1rem;
 }
 
 .todos__container {

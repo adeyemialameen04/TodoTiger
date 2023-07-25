@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import TodoItem from "./TodoItem";
 
 const DisplayTodo = ({ getTodos, todos, reference }) => {
-  const currentUser = auth?.currentUser?.uid;
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
@@ -50,18 +49,17 @@ const DisplayTodo = ({ getTodos, todos, reference }) => {
       <aside className="container">
         <h1>Hi, {auth?.currentUser?.displayName}</h1>
         <Link to="/newTodo">Create a todo</Link>
+        <input
+          type="text"
+          name="todoInput"
+          id="todoInput"
+          placeholder="Search for todos"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
       </aside>
-      <input
-        type="text"
-        name="todoInput"
-        id="todoInput"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
       <div className="container todos__container">
-        {
-          getSearchedTodos()
-        }
+        {getSearchedTodos()}
       </div>
     </section>
   );

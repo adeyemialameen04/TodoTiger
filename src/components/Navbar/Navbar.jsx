@@ -3,12 +3,9 @@ import "./navbar.css";
 import { AiOutlinePoweroff } from "react-icons/ai";
 import { auth } from "../../config/firebase";
 import { signOut } from "firebase/auth";
-import { useEffect } from "react";
 
 const Navbar = () => {
   const navigate = useNavigate();
-
-
 
   const logout = async () => {
     try {
