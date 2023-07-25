@@ -1,15 +1,13 @@
 import { addDoc, collection } from "firebase/firestore";
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { auth, db } from "../../config/firebase";
 import { Link } from "react-router-dom";
 import "./addtodo.css";
-import TodoItem from "../Todos/TodoItem";
 
 const AddTodo = ({ onAddTodo }) => {
   const [todo, setTodo] = useState("");
   const [content, setContent] = useState("");
   const [date, setDate] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
 
   const addTodo = async () => {
     try {
