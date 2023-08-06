@@ -1,5 +1,5 @@
 import { addDoc, collection } from "firebase/firestore";
-import { useState } from 'react';
+import { useState } from "react";
 import { auth, db } from "../../config/firebase";
 import { Link } from "react-router-dom";
 import "./addtodo.css";
@@ -17,34 +17,35 @@ const AddTodo = ({ onAddTodo }) => {
       } else if (date.trim() === "") {
         alert("Pls add a deadline 😉🥹");
       }
-      const currentDate = new Date().toISOString().split('T')[0];
-      if (date < currentDate) {
-        alert("You can't select a date from the past 😒😒");
-        setDate("");
-        return;
-      }
+      const currentDate = new Date().toISOString().split("T")[0];
+      // if (date < currentDate) {
+      //   alert("You can't select a date from the past 😒😒");
+      //   setDate("");
+      //   return;
+      // }
 
       const todoRef = collection(db, "todos");
       await addDoc(todoRef, {
         title: todo,
         content: content,
         userId: auth?.currentUser?.uid,
-        date: date
+        date: date,
       });
 
       const newTodo = {
         userId: auth?.currentUser?.uid,
         title: todo,
         content: content,
-        date: date
+        date: date,
       };
-
 
       if (onAddTodo) {
         onAddTodo(newTodo);
       }
 
-      alert("Todo created successfully. Go to the todos page to see your saved todos");
+      alert(
+        "Todo created successfully. Go to the todos page to see your saved todos"
+      );
       setTodo("");
       setContent("");
     } catch (error) {
@@ -66,7 +67,12 @@ const AddTodo = ({ onAddTodo }) => {
           onChange={(e) => setTodo(e.target.value)}
         />
         <label htmlFor="date">Deadline</label>
-        <input type="date" id="date" value={date} onChange={(e) => setDate(e.target.value)} />
+        <input
+          type="date"
+          id="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
         <textarea
           type="text"
           value={content}
